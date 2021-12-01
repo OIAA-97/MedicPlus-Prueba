@@ -83,6 +83,8 @@ class UsuarioCreadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id); 
+        $usuario->delete();
+        return redirect('/usuario');
     }
 }
