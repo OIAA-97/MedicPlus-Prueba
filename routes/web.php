@@ -27,6 +27,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('usuario', 'App\Http\Controllers\UsuarioCreadoController');
+
 Route::view('dashboard', 'dashboard')
 	->name('dashboard')
 	->middleware(['auth', 'verified']);

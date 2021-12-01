@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('login.custom') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <div>
