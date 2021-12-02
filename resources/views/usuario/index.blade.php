@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 @endsection
 
 @section('contenido')
@@ -24,7 +25,7 @@
             <td>{{$usuarios -> email}}</td>
             <td>
                 <form action="{{ route ('usuario.destroy',$usuarios->id)}}" method="POST">
-                <!-- <a href="" class="btn btn-info">Editar</a> -->
+                <a href="" class="btn btn-info">Editar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>
