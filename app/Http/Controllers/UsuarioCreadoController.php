@@ -60,7 +60,8 @@ class UsuarioCreadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('usuario.edit')->with('usuarios',$usuario);
     }
 
     /**
@@ -72,7 +73,11 @@ class UsuarioCreadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::find($id); 
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
+        $usuario->save();
+        return redirect('/usuario');
     }
 
     /**
@@ -85,6 +90,7 @@ class UsuarioCreadoController extends Controller
     {
         $usuario = User::find($id); 
         $usuario->delete();
-        return redirect('/usuario');
+        return redirect('/usuario')
+        ->with('success', 'Usuario eliminado correctamente');
     }
 }
