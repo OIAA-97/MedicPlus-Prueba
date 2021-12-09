@@ -77,7 +77,7 @@ class UsuarioCreadoController extends Controller
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email');
         $usuario->save();
-        return redirect('/usuario');
+        return redirect('/usuario')->with('success', 'Se actualizo correctamente');
     }
 
     /**
