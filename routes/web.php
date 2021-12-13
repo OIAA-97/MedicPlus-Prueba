@@ -23,13 +23,16 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('usuario', 'App\Http\Controllers\UsuarioCreadoController');
+// Route::resource('usuario', 'App\Http\Controllers\UsuarioCreadoController');
+
+Route::resource('usuario', UsuarioCreadoController::class);
+
 
 Route::view('dashboard', 'dashboard')
 	->name('dashboard')

@@ -27,7 +27,8 @@ class UsuarioCreadoController extends Controller
      */
     public function create()
     {
-        //
+        // return view('usuario.create');
+        // return redirect('/usuario');
     }
 
     /**
