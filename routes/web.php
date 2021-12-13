@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\UsuarioCreadoController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/posts/export-excel', [PostController::class, 'exportExcel']);
 
 Route::get('/', function () {
     return view('welcome');
