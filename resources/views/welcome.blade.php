@@ -34,6 +34,7 @@
                         @endif
                     @endauth
                     <a href="{{ url('/usuario') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Usuarios</a>
+                    <a href="{{ route('posts') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">EXPORT EXCEL</a>
                 </div>
             @endif
             

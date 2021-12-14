@@ -78,7 +78,7 @@ class UsuarioCreadoController extends Controller
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email');
         $usuario->save();
-        return redirect('/usuario')->with('success', 'Se actualizo correctamente');
+        return redirect('/usuario');
     }
 
     /**
@@ -91,7 +91,6 @@ class UsuarioCreadoController extends Controller
     {
         $usuario = User::find($id); 
         $usuario->delete();
-        return redirect('/usuario')
-        ->with('success', 'Usuario eliminado correctamente');
+        return redirect('/usuario');
     }
 }
