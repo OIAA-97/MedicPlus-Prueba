@@ -164,7 +164,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
 
         /*
          * Package Service Providers...

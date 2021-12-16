@@ -16,7 +16,7 @@ class UsuarioCreadoController extends Controller
     {
         
         $usuario = User::all(); 
-        return view('usuario.index')->with('users',$usuario);  
+        return view('usuario.index', ['users' => $usuario]);  
         // ->with('users',$usuario)
     }
 
@@ -93,4 +93,5 @@ class UsuarioCreadoController extends Controller
         $usuario->delete();
         return redirect('/usuario');
     }
+
 }

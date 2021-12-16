@@ -1,5 +1,5 @@
 @extends('layouts.plantillabase')
-@section('title', 'CRUD USUARIOS')
+@section('title', 'Usuarios')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
@@ -37,6 +37,9 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>
+                <!-- @if (auth()->check() && auth()->id() != $usuarios->id)
+					<a class="btn btn-primary" href="{{ route('impersonate', $usuarios->id) }}">Loguearse como {{ $usuarios->name }}</a>
+				@endif -->
                 </form>
             </td>
         </tr>

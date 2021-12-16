@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\UsuarioCreadoController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,14 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/export-excel', [PostController::class, 'exportExcel']);
+
+
+// Route::middleware(['web', 'auth'])->group(function() {
+//     Route::impersonate();
+//     Route::get('/usuario', 'UserController@index')->name('usuario.index');
+// });
+
+
 
 Route::get('/', function () {
     return view('welcome');
