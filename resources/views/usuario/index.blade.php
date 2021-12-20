@@ -1,23 +1,11 @@
 @extends('layouts.plantillabase')
-
+@section('title', 'Usuarios')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 @endsection
 
 @section('contenido')
-
-<div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Laravel 8 CRUD </h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('register') }}" title="Crear Usuario"> <i class="fas fa-plus-circle"></i>
-                    </a>
-            </div>
-        </div>
-    </div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -49,12 +37,17 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>
+                <!-- @if (auth()->check() && auth()->id() != $usuarios->id)
+					<a class="btn btn-primary" href="{{ route('impersonate', $usuarios->id) }}">Loguearse como {{ $usuarios->name }}</a>
+				@endif -->
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+
+@endsection
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -68,6 +61,16 @@
 });
 </script>
 
-@endsection
+<!-- <script>
+    $(document){ $('#usuarios').DataTable(); }
+</script> -->
+
+<!-- <script>
+    $(function(){
+        $('#usuarios').DataTable();
+    })
+</script> -->
 
 @endsection
+
+

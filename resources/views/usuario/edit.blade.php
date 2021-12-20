@@ -2,25 +2,25 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 @endsection
 
 @section('contenido')
 <h2>EDITAR REGISTROS</h2>
 
-  @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
 
-<form action="/usuario/{{$usuarios->id}}" method="POST">
-    @csrf    
-    @method('PUT')
-    
+<form action="{{route('usuario.update', $usuarios->id)}}" method="POST">
+  @csrf
+  @method('PUT')
+
   <div class="mb-3">
     <label for="" class="form-label">nombre</label>
-    <input id="name" name="name" type="text" class="form-control" value="{{$usuarios->name}}">    
+    <input id="name" name="name" type="text" class="form-control" value="{{$usuarios->name}}">
   </div>
   <div class="mb-3">
     <label for="" class="form-label">email</label>
@@ -30,8 +30,10 @@
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 
+@endsection
 
 @section('js')
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>

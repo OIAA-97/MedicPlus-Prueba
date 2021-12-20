@@ -16,7 +16,7 @@ class UsuarioCreadoController extends Controller
     {
         
         $usuario = User::all(); 
-        return view('usuario.index')->with('users',$usuario);  
+        return view('usuario.index', ['users' => $usuario]);  
         // ->with('users',$usuario)
     }
 
@@ -27,7 +27,8 @@ class UsuarioCreadoController extends Controller
      */
     public function create()
     {
-        //
+        // return view('usuario.create');
+        // return redirect('/usuario');
     }
 
     /**
@@ -77,7 +78,7 @@ class UsuarioCreadoController extends Controller
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email');
         $usuario->save();
-        return redirect('/usuario')->with('success', 'Se actualizo correctamente');
+        return redirect('/usuario');
     }
 
     /**
@@ -90,7 +91,7 @@ class UsuarioCreadoController extends Controller
     {
         $usuario = User::find($id); 
         $usuario->delete();
-        return redirect('/usuario')
-        ->with('success', 'Usuario eliminado correctamente');
+        return redirect('/usuario');
     }
+
 }

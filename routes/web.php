@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\UsuarioCreadoController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +25,26 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/posts/export-excel', [PostController::class, 'exportExcel']);
+
+
+// Route::middleware(['web', 'auth'])->group(function() {
+//     Route::impersonate();
+//     Route::get('/usuario', 'UserController@index')->name('usuario.index');
+// });
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('usuario', 'App\Http\Controllers\UsuarioCreadoController');
+// Route::resource('usuario', 'App\Http\Controllers\UsuarioCreadoController');
+
+Route::resource('usuario', UsuarioCreadoController::class);
+
 
 Route::view('dashboard', 'dashboard')
 	->name('dashboard')
