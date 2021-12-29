@@ -34,7 +34,7 @@
             <td>
                 <form action="{{ route ('usuario.destroy',$usuarios->id)}}" method="POST">
                 <!-- <a href="/usuario/{{$usuarios->id}}/edit" class="btn btn-info">Editar</a> -->
-                <a href=" route ('usuario.edit',$usuarios->hashid)" class="btn btn-info">Editar</a>
+                <a href=" route ('usuario.edit', $usuarios->hashid) " class="btn btn-info">Editar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>

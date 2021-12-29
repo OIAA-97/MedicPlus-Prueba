@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Lab404\Impersonate\Models\Impersonate;
+// use Veelasky\LaravelHashId\Eloquent\HashableId;
 
 class User extends Authenticatable
 {
@@ -48,8 +49,17 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function getHashidAttribute()
+    //SE CREA EL METODO 'getHashidAttribute'
+    public function getHashidAttribute($id)
     {
-        return Hashids::encode($this->attribute['id']);
+        // return Hashids::encode($this->attribute['id']);
+        return Hashids::encode($id);
+        // return $this->hashid();
     }
+
+    //SE CREA EL METODO ESTATICO 'findHashed' DE ID
+    // public static function findHashed($id)
+    // {
+        
+    // }
 }
