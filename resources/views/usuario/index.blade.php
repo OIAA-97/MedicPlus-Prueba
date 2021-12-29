@@ -1,8 +1,9 @@
 @extends('layouts.plantillabase')
 @section('title', 'Usuarios')
+
 @section('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"> -->
 @endsection
 
 @section('contenido')
@@ -12,7 +13,6 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
 
 <h1>Vista</h1>
 
@@ -33,7 +33,8 @@
             <td>{{$usuarios -> email}}</td>
             <td>
                 <form action="{{ route ('usuario.destroy',$usuarios->id)}}" method="POST">
-                <a href="/usuario/{{$usuarios->id}}/edit" class="btn btn-info">Editar</a>
+                <!-- <a href="/usuario/{{$usuarios->id}}/edit" class="btn btn-info">Editar</a> -->
+                <a href=" route ('usuario.edit',$usuarios->hashid)" class="btn btn-info">Editar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -50,10 +51,10 @@
 @endsection
 
 @section('js')
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
 
 <script>
     $(document).ready(function() {
