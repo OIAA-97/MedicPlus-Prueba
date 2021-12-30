@@ -61,6 +61,7 @@ class UsuarioCreadoController extends Controller
      */
     public function edit($id)
     {
+        // $usuario = User::find($id);
         $usuario = User::findHashed($id);
         return view('usuario.edit')->with('usuarios',$usuario);
     }
