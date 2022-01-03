@@ -2093,6 +2093,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
+__webpack_require__(/*! ./main */ "./resources/js/main.js");
+
+/***/ }),
+
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/***/ (() => {
+
+alert('ESTO ES UNA PRUEBA DE EJECUCION LARAVEL MIX CON JAVASCRIPT');
+
 /***/ }),
 
 /***/ "./node_modules/lodash/lodash.js":
