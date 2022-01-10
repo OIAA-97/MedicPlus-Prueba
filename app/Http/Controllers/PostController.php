@@ -18,6 +18,8 @@ class PostController extends Controller
     public function exportExcel(){
         return Excel::download(new PostsExport, 'laravelexcel.xlsx');
     }
+
+    
     
     
 }
