@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Lab404\Impersonate\Models\Impersonate;
 use Vinkla\Hashids\Facades\Hashids;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Impersonate;
+    use HasApiTokens, HasFactory, Notifiable, Impersonate, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -56,7 +57,7 @@ class User extends Authenticatable
     //SE CREA EL METODO 'getHashidAttribute'
     public function getHashidAttribute($id)
     {
-        // return Hashids::encode($this->attributes['id']);
+        return Hashids::encode($this->attributes['id']);
         //return \Hashids::encode($id);
         //return $this->hashids();
     }
@@ -65,20 +66,13 @@ class User extends Authenticatable
 
     public static function findHashed($id)
     {
+        $decoded = Hashids::decode($id);
+        return User::findOrFail($decoded[0]);
+    }
 
-        $decoded = \Hashids::decode($id);
-        
-        // if (!$decoded) {
-        //     return null;
-        // }
-
-        // return self::find($id);
-
-        // if (empty($decoded = self::find($id))) {
-        //     return null;
-        // }
-
-        // return self::find(self::find($id));
+    public function canBeImpersonated()
+    {
+        return true;
     }
     
 }

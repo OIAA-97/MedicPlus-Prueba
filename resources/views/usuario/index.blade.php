@@ -14,7 +14,10 @@
         </div>
     @endif
 
+
+    
 <h1>Vista</h1>
+
 
 <table id="usuarios" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
@@ -32,15 +35,17 @@
             <td>{{$usuarios -> name}}</td>
             <td>{{$usuarios -> email}}</td>
             <td>
-                <form action="{{ route ('usuario.destroy',$usuarios->id)}}" method="POST">
+                <form action="{{ route ('usuario.destroy',$usuarios->id)}}" method="POST" class="form-eliminar">
                 <!-- <a href="/usuario/{{$usuarios->id}}/edit" class="btn btn-info">Editar</a> -->
                 <a href="{{ route ('usuario.edit', $usuarios->hashid) }}" class="btn btn-info">Editar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Eliminar</button>
-                <!-- @if (auth()->check() && auth()->id() != $usuarios->id)
-					<a class="btn btn-primary" href="{{ route('impersonate', $usuarios->id) }}">Loguearse como {{ $usuarios->name }}</a>
-				@endif -->
+                 @if (auth()->check() && auth()->id() != $usuarios->id)
+                    @canBeImpersonated($usuarios)
+                        <a class="btn btn-primary" href="{{ route('impersonate', $usuarios->id) }}">Loguearse como {{ $usuarios->name }}</a>
+                    @endCanBeImpersonated
+                @endif
                 </form>
             </td>
         </tr>
@@ -58,19 +63,49 @@
 
 <script>
     $(document).ready(function() {
-    $('#usuarios').DataTable();
+        $('#usuarios').DataTable();
 });
 </script>
 
-<!-- <script>
-    $(document){ $('#usuarios').DataTable(); }
-</script> -->
 
-<!-- <script>
-    $(function(){
-        $('#usuarios').DataTable();
+    @if (session('eliminar') == 'ok') {
+      <script>
+        Swal.fire(
+          'Usuario Eliminado',
+          'Este usuario se ha eliminado correctamente',
+          'success'
+        )
+      </script>
+    }
+    @endif
+
+<script>
+
+    $('.form-eliminar').submit(function(e){
+        e.preventDefault(); //Detiene el envio del formulario.
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Este usuario dejara de existir en tu lista",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire(
+        //   'Usuario Eliminado',
+        //   'Este usuario se ha eliminado correctamente',
+        //   'success'
+        // )
+        this.submit();
+      }
     })
-</script> -->
+    });
+
+</script>
 
 @endsection
 

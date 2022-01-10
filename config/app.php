@@ -165,6 +165,7 @@ return [
         Vinkla\Hashids\HashidsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Lab404\Impersonate\ImpersonateServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

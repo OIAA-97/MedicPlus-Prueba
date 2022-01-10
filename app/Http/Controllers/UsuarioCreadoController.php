@@ -92,7 +92,26 @@ class UsuarioCreadoController extends Controller
     {
         $usuario = User::find($id); 
         $usuario->delete();
-        return redirect('/usuario');
+        return redirect('/usuario')->with('eliminar','ok');
     }
 
+    public function canImpersonate() {
+        return $this->id == 1;
+    }
+
+    public function canBeImpersonate() {
+        return $this->id == 2;
+    }
+
+    // public function impersonate(User $usuario) {
+    //     auth()->user()->impersonate($usuario);
+    //     return redirect()->route('/usuario');
+    // }
+
+    // public function leaveimpersonate(User $usuario) {
+    //     auth()->user()->impersonate($usuario);
+    //     return redirect()->route('/usuario');
+    // }
+
+    
 }
