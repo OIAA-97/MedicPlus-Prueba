@@ -30,6 +30,10 @@ Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/export-excel', [PostController::class, 'exportExcel']);
 
+Route::get('/busqueda',[PostController::class, 'busqueda'])->name('busqueda');
+Route::post('/buscar',[PostController::class, 'buscar'])->name('buscar');
+
+
 Route::middleware(['web', 'auth'])->group(function() {
     Route::impersonate();
     Route::get('/usuario', 'UsuarioCreadoController@index')->name('usuario.index');

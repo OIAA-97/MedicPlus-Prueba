@@ -19,7 +19,14 @@ class PostController extends Controller
         return Excel::download(new PostsExport, 'laravelexcel.xlsx');
     }
 
-    
+    public function busqueda() {
+        return view('busqueda');
+    }
+
+    public function buscar(Request $requet) {
+        $data = Posts::search($request->q)->paginate(10);
+        return view('buscar', compact('data'));
+    }
     
     
 }

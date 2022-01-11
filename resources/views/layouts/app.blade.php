@@ -17,7 +17,7 @@
   </head>
   <body>
     <!-- <h1>Hello, world!</h1> -->
-  
+
     @yield('content')
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -26,5 +26,7 @@
      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      @yield('js')
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch@0.3.2/dist/instant-meilisearch.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
  
 </html>
