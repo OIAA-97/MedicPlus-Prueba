@@ -14,6 +14,8 @@
         <a href="{{ url('posts/export-excel') }}" class="btn btn-info btn-prymary">Exportar a Excel</a>
     </div>
 
+<input type="search" id="inputBusqueda">
+ <div id="resultados">
     <table class="table">
   <thead>
     <tr>
@@ -34,7 +36,7 @@
         @endforeach
     </tbody>
 </table>
-
+</div>
 
 @endsection
 
@@ -96,7 +98,14 @@
 </script> -->
 
 <script>
-    $(document){ $('#posts').DataTable(); }
+    // $(document){ $('#posts').DataTable(); }
+
+    
+
+     $.post("{{ route('buscar') }}", {'q': $("#inputBusqueda").val()}, (data) => {
+       $("#resultados").html(data);
+     });
 </script>
+
 
 @endsection

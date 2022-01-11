@@ -28,3 +28,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 
 require('./main');
+
+// window.$ = require('jquery');
+
+// window.jquery = require('jquery');
