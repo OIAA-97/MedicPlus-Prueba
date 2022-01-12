@@ -14,8 +14,10 @@
         <a href="{{ url('posts/export-excel') }}" class="btn btn-info btn-prymary">Exportar a Excel</a>
     </div>
 
+    
 <input type="search" id="inputBusqueda">
  <div id="resultados">
+    <!-- <button type="submit">Search</button> -->
     <table class="table">
   <thead>
     <tr>
@@ -36,7 +38,9 @@
         @endforeach
     </tbody>
 </table>
+
 </div>
+
 
 @endsection
 
@@ -100,11 +104,24 @@
 <script>
     // $(document){ $('#posts').DataTable(); }
 
-    
+    /*
+    *
+    *
+     El AJAX 'SETUP' ENVIA EL TOKEN EN CADA PETICION QUE HAGA EL QUERY.
+    *
+    */
 
-     $.post("{{ route('buscar') }}", {'q': $("#inputBusqueda").val()}, (data) => {
-       $("#resultados").html(data);
-     });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+     $("#inputBusqueda").keyup(function(){
+        $.post("{{ route('buscar') }}", {'q': $("#inputBusqueda").val()}, (data) => {
+            $("#resultados").html(data);
+        });
+    });
 </script>
 
 

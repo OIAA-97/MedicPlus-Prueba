@@ -26,7 +26,5 @@
      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      @yield('js')
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch@0.3.2/dist/instant-meilisearch.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
  
 </html>

@@ -23,9 +23,9 @@ class PostController extends Controller
         return view('busqueda');
     }
 
-    public function buscar(Request $requet) {
-        $data = Posts::search($request->q)->paginate(10);
-        return view('buscar', compact('data'));
+    public function buscar(Request $request) {
+        $posts = Post::search($request->q)->paginate(10);
+        return view('buscar', compact('posts'));
     }
     
     
